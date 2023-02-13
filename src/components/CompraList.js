@@ -14,6 +14,14 @@ function CompraList() {
         setCompras(newCompras);
     };
 
+    const updateCompra = (compraId, newValue) => {
+        if (!newValue.text || /^\s*$/.test(newValue.text)) {
+            return;
+        }
+
+        setCompras(prev => prev.map(item => (item.id === compraId ? newValue : item)));
+    }
+
     const removeCompra = id => {
         const removeArr = [...compras].filter(compra => compra.id !== id);
         setCompras(removeArr);
@@ -32,7 +40,12 @@ function CompraList() {
         <div>
             <h1>Lista de compras: </h1>
             <CompraForm onSubmit={addCompra} />
-            <Compra compras={compras} completeCompra={completeCompra} removeCompra={removeCompra} />
+            <Compra
+                compras={compras}
+                completeCompra={completeCompra}
+                removeCompra={removeCompra}
+                updateCompra={updateCompra}
+            />
         </div>
     )
 }
