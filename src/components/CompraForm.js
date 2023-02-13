@@ -1,8 +1,14 @@
 /* eslint-disable no-undef */
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 function CompraForm(props) {
-    const [input, setInput] = useState('');
+    const [input, setInput] = useState(props.edit ? props.edit.value : '');
+
+    const inputRef = useRef(null)
+
+    useEffect(() => {
+        inputRef.current.focus();
+    });
     //funcao responsavel por actualizar o estado a cada vez que o botao é clicado:
     const handleChange = e => {
         setInput(e.target.value);
@@ -20,15 +26,36 @@ function CompraForm(props) {
     };
     return (
         <form className='compra-form' onSubmit={handleSubmit}>
-            <input
-                type='text'
-                placeholder='Adicionar'
-                value={input}
-                name='text'
-                className='compra-form'
-                onChange={handleChange}
-            />
-            <button className='compra-button'>Adicionar</button>
+            {props.edit ? (
+                <>
+                    <input
+                        type='text'
+                        placeholder='Actualizar'
+                        value={input}
+                        name='text'
+                        className='compra-input edit'
+                        onChange={handleChange}
+                        ref={inputRef}
+                    />
+                    <button className='compra-button edit'>Actualizar</button>
+                </>
+            ) :
+                (
+                    <>
+                        <input
+                            type='text'
+                            placeholder='Adicionar'
+                            value={input}
+                            name='text'
+                            className='compra-input'
+                            onChange={handleChange}
+                            ref={inputRef}
+                        />
+                        <button className='compra-button'>Adicionar</button>
+                    </>
+
+                )}
+
         </form>
     )
 }
