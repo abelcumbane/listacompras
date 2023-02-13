@@ -12,7 +12,7 @@ function CompraForm(props) {
         e.preventDefault();
 
         props.onSubmit({
-            id: Math.floor(Math.random()*10000),
+            id: Math.floor(Math.random() * 10000),
             text: input
         });
 
