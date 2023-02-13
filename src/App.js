@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import CompraForm from './components/CompraForm';
+import CompraList from './components/CompraList';
 
 function App() {
   return (
     <div className="compra-app">
-      <CompraForm />
+      <CompraList />
     </div>
   );
 }
