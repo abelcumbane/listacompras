@@ -30,7 +30,7 @@ function CompraForm(props) {
                 <>
                     <input
                         type='text'
-                        placeholder='Actualizar'
+                        placeholder='Actualizar a lista:'
                         value={input}
                         name='text'
                         className='compra-input edit'
@@ -44,7 +44,7 @@ function CompraForm(props) {
                     <>
                         <input
                             type='text'
-                            placeholder='Adicionar'
+                            placeholder='Adicionar na lista:'
                             value={input}
                             name='text'
                             className='compra-input'
